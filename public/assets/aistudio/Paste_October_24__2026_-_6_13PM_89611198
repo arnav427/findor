@@ -1,0 +1,891 @@
+# PROJECT: FINDORA — CANVAS PROTOCOL EDITION
+
+## Interactive Drag-and-Drop Lost & Found Platform
+
+### 1. YOUR ROLE
+
+Act as a senior full-stack engineer, creative UI/UX designer, interaction designer, and hackathon solution architect.
+
+Transform my EXISTING Digital Lost & Found application into a highly interactive, production-oriented canvas interface that complies with the new Code Variant hackathon challenge: THE CANVAS PROTOCOL.
+
+IMPORTANT:
+
+* Do not start a new project from scratch.
+* Inspect the existing source code and preserve its architecture wherever practical.
+* Preserve all existing authentication, database integrations, routes, user profiles, item reports, maps, and other working functionality.
+* Implement the new interaction model throughout the application.
+* Do not create a static prototype or a frontend-only demonstration.
+* Connect every primary drag-and-drop action to the application's actual business logic and persistent storage.
+
+The final application must be visually impressive, intuitive, responsive, and genuinely functional.
+
+---
+
+# 2. THE CORE CONCEPT
+
+Replace traditional primary-action buttons with an interactive workspace called:
+
+FINDORA INTERACTIVE CANVAS
+
+The interface should feel like a combination of:
+
+* A modern productivity workspace.
+* An intelligent investigation dashboard.
+* A visual workflow builder.
+* A digital command centre for lost and found items.
+
+Users should manipulate item cards directly on the canvas and drop them into clearly marked action zones.
+
+The canvas is the main interaction surface, not merely a decorative dashboard.
+
+## Strict interaction requirement
+
+Primary actions MUST be initiated by dragging and dropping data cards into designated action zones.
+
+Do not use ordinary clickable buttons to execute primary actions such as:
+
+* Reporting a lost item.
+* Reporting a found item.
+* Initiating a claim.
+* Accepting a verified match.
+* Completing an item return.
+* Archiving or deleting an item.
+* Saving a report when Save is the primary operation.
+* Confirming a handover.
+
+Instead, implement these actions as explicit drag-and-drop workflows.
+
+Ordinary navigation, search inputs, map controls, text fields, accessibility settings, and other non-primary interface controls may remain interactive.
+
+Do not disguise a conventional button as a card. The user's drag-and-drop gesture must actually initiate the action.
+
+---
+
+# 3. MAIN CANVAS LAYOUT
+
+Design a polished desktop-first interface that adapts gracefully to mobile devices.
+
+## A. Left navigation panel
+
+Include:
+
+* Findora branding and logo.
+* Overview.
+* Explore Items.
+* Lost Items.
+* Found Items.
+* Interactive Map.
+* Smart Matches.
+* My Reports.
+* Claims & Returns.
+* Identity Verification.
+* Messages.
+* Profile and Settings.
+
+Navigation elements can use conventional links or navigation controls because they do not execute the application's primary item-management actions.
+
+Include clear active states, icons, subtle transitions, and responsive behavior.
+
+## B. Main canvas
+
+The central workspace should contain three areas:
+
+1. DATA CARD LIBRARY
+2. ACTIVE WORKSPACE
+3. ACTION ZONE DOCK
+
+Users should be able to move cards between these areas and execute workflows by dropping cards into compatible zones.
+
+Provide:
+
+* A clear canvas title.
+* A short interaction guide.
+* Search and filtering controls.
+* A canvas status indicator.
+* A drag-operation preview.
+* Contextual action-zone highlighting.
+* A visible result or confirmation after each operation.
+
+The interface should never require users to guess where a card belongs.
+
+## C. Right contextual panel
+
+When a user selects a card, display its relevant details in a contextual panel.
+
+For an item card, show:
+
+* Item name and category.
+* Image or uploaded photographs.
+* Description.
+* Colour, brand, and distinguishing features.
+* Approximate discovery or loss time.
+* General location.
+* Report status.
+* Match suggestions.
+* Relevant verification status.
+* Available next steps.
+
+Protect private ownership clues, personal information, and identity documents.
+
+---
+
+# 4. DRAGGABLE DATA CARD SYSTEM
+
+Implement reusable, typed, draggable cards.
+
+Every card must have a unique identifier, a data type, its current status, and information about which action zones can accept it.
+
+Support the following card categories.
+
+### A. Lost Item Card
+
+Displays:
+
+* Item photograph.
+* Item name.
+* Category.
+* General location.
+* Approximate time lost.
+* Report creation date.
+* Current status.
+* Match count.
+
+### B. Found Item Card
+
+Displays:
+
+* Photograph.
+* Item name.
+* Category.
+* Found location.
+* Approximate time found.
+* Finder's privacy-preserving profile information.
+* Current status.
+
+### C. Potential Match Card
+
+Displays:
+
+* Lost item reference.
+* Possible found item reference.
+* Match confidence score.
+* Visual similarity indicators.
+* Location proximity.
+* Time compatibility.
+* Explanation of why the items may match.
+
+Clearly label these as suggestions, not confirmed ownership.
+
+### D. Claim Card
+
+Displays:
+
+* Claim reference.
+* Associated item.
+* Claim status.
+* Evidence submission status.
+* Verification status.
+* Next required step.
+
+### E. Return Card
+
+Displays:
+
+* Item reference.
+* Approved claimant reference.
+* Designated handover location.
+* Handover status.
+* Secure verification requirements.
+
+### Card interaction behavior
+
+Implement:
+
+* Smooth drag previews.
+* Card lift and shadow effects.
+* Cursor feedback.
+* Touch-friendly dragging.
+* Drop-target highlighting.
+* Valid and invalid drop states.
+* Clear operation progress.
+* Success and failure feedback.
+* Automatic refresh after successful operations.
+
+Use real application data, not hardcoded demonstration records.
+
+If the database contains no items, show a well-designed empty state that guides the user through the canvas workflow.
+
+---
+
+# 5. ACTION ZONES: THE MAIN HACKATHON FEATURE
+
+Create a persistent dock of large, visually distinct action zones.
+
+Every zone must display:
+
+* An icon.
+* A clear action name.
+* A short instruction.
+* The card types it accepts.
+* Its current availability.
+* An explanation of what will happen after a successful drop.
+
+Action zones should visibly react when a compatible card approaches them.
+
+## ZONE 1: REPORT LOST
+
+Label: "DROP TO REPORT LOST"
+
+Interaction:
+
+1. The user drags a suitable item-information card into the zone.
+2. The interface opens an item-reporting workflow.
+3. The user enters missing details and uploads photographs.
+4. The user supplies the approximate loss location and time.
+5. The user reviews the report.
+6. The user drags the completed draft card into the final reporting zone.
+
+Persist the report only after all required information has been validated.
+
+On success:
+
+* Create the report in the actual database.
+* Display the new report card.
+* Update the user's dashboard.
+* Refresh potential matches.
+
+## ZONE 2: REPORT FOUND
+
+Label: "DROP TO REPORT FOUND"
+
+Interaction:
+
+1. Drag an item-information card into the zone.
+2. Complete the found-item information.
+3. Add photographs and distinguishing details.
+4. Select the approximate found location using the integrated map.
+5. Review the information.
+6. Drag the completed draft into the reporting zone.
+
+On success:
+
+* Save the found-item report.
+* Update the available-item collection.
+* Trigger the configured matching process.
+* Display any newly generated match suggestions.
+
+Do not expose the finder's personal contact information publicly.
+
+## ZONE 3: FIND MATCHES
+
+Label: "DROP TO ANALYSE MATCHES"
+
+Interaction:
+
+1. Drag a lost or found item card into the zone.
+2. Compare it against compatible reports.
+3. Calculate or retrieve similarity information using the existing matching system.
+4. Rank potential matches.
+5. Generate explainable match cards.
+
+Use multiple matching signals:
+
+* Item category.
+* Appearance.
+* Colour.
+* Brand and model, when available.
+* Distinguishing characteristics.
+* Approximate location.
+* Approximate time.
+* Image similarity, if supported.
+
+Do not invent confidence scores or claim that a match is certain.
+
+If AI-based matching is unavailable, implement a reliable rule-based matching algorithm.
+
+Display the reasons supporting each suggestion.
+
+## ZONE 4: CLAIM OWNERSHIP
+
+Label: "DROP TO START CLAIM"
+
+Interaction:
+
+1. Drag an eligible found-item or potential-match card into the zone.
+2. Open a claim workspace.
+3. Ask the claimant to provide relevant ownership evidence.
+4. Keep sensitive evidence private.
+5. Allow the appropriate authorized person to review the claim.
+6. Update the claim status after an authorized decision.
+
+Possible states:
+
+* Not claimed.
+* Claim submitted.
+* Under review.
+* Additional evidence requested.
+* Approved.
+* Rejected.
+* Disputed.
+
+Only authorized users may approve or reject claims.
+
+A high match score alone must never establish ownership.
+
+## ZONE 5: CONFIRM MATCH
+
+Label: "DROP TO LINK REPORTS"
+
+Interaction:
+
+1. Drag a potential-match card into the zone.
+2. Display the two associated reports.
+3. Explain why they were matched.
+4. Verify that the user has permission to perform the requested operation.
+5. Apply the appropriate matching transition.
+
+If confirmation requires approval from another party, create a pending confirmation request instead of automatically marking the item as matched.
+
+Never merge reports or confirm ownership without the necessary authorization.
+
+## ZONE 6: COMPLETE RETURN
+
+Label: "DROP TO COMPLETE RETURN"
+
+Interaction:
+
+1. Drag an eligible, approved claim or return card into the zone.
+2. Check the claim status and required approvals.
+3. Show the authorized handover instructions.
+4. Require the designated return process to be completed.
+5. Verify a short-lived, single-use handover code or equivalent configured verification mechanism.
+6. Record the successful handover.
+
+Only then update the item's status to returned.
+
+Maintain an audit trail of the operation.
+
+## ZONE 7: ARCHIVE OR DELETE
+
+Label: "DROP TO ARCHIVE"
+
+Interaction:
+
+1. Drag an eligible report card into the zone.
+2. Validate permissions and ownership.
+3. Explain the consequences of the operation.
+4. For deletion, require an explicit secondary confirmation within the drag-and-drop workflow.
+5. Apply the permitted action.
+
+Prefer reversible archiving over permanent deletion where appropriate.
+
+Do not allow deletion of another user's report or unauthorized removal of evidence.
+
+---
+
+# 6. MAKE EVERY DROP FUNCTIONAL
+
+Create a central drag-and-drop action engine.
+
+Use a consistent action architecture with the following logical flow:
+
+DRAG START
+↓
+IDENTIFY CARD TYPE AND ID
+↓
+HIGHLIGHT COMPATIBLE ACTION ZONES
+↓
+USER DROPS CARD
+↓
+VALIDATE CARD, ZONE AND PERMISSIONS
+↓
+COLLECT REQUIRED INFORMATION
+↓
+VALIDATE BUSINESS RULES
+↓
+EXECUTE AUTHORIZED BACKEND OPERATION
+↓
+UPDATE DATABASE AND UI
+↓
+DISPLAY RESULT AND AUDIT EVENT
+
+Implement reusable functions similar to:
+
+* handleDragStart(card)
+* handleDragOver(zone)
+* handleDrop(card, zone)
+* validateDrop(card, zone, user)
+* executeCanvasAction(card, zone, user)
+* refreshCanvasData()
+* showActionFeedback(result)
+
+Adapt these names to the existing codebase rather than duplicating existing business logic.
+
+### Important engineering rules
+
+* Never trust client-side permissions.
+* Enforce authorization on the server.
+* Validate all required fields.
+* Prevent duplicate report submissions.
+* Prevent duplicate claims where prohibited.
+* Handle failed network requests.
+* Avoid silent failures.
+* Prevent incompatible card types from triggering actions.
+* Prevent accidental deletion or handover.
+* Update persistent data only after successful validation.
+* Use transactions where multiple related records must change together.
+* Ensure that retrying a failed operation does not create duplicate records.
+* Preserve data integrity during concurrent actions.
+
+A successful animation is not proof that an operation succeeded. Show success only after the backend confirms the result.
+
+---
+
+# 7. INTERACTIVE MAP INTEGRATION
+
+Preserve or implement a real interactive map using a suitable provider such as Leaflet with OpenStreetMap tiles, or the map provider already configured in the project.
+
+Required features:
+
+* Map markers for approximate lost-item locations.
+* Map markers for approximate found-item locations.
+* Filters for lost, found, matched, and returned items.
+* Location search where supported.
+* Map/list synchronization.
+* Location selection during reporting.
+* Nearby-item discovery.
+* Approximate distance calculations.
+* Configured custody desk locations.
+* Responsive map layout.
+
+### Canvas integration
+
+Allow users to drag an item card onto a designated map workspace to inspect its location.
+
+Allow compatible map results to be dragged into:
+
+* Find Matches.
+* View Nearby Items.
+* Start Claim, when eligible.
+
+Do not let map dragging accidentally trigger a primary action.
+
+Use separate drag handles or interaction modes where necessary.
+
+Never expose an item's exact sensitive location publicly if doing so creates a security or privacy risk.
+
+Do not fabricate map coordinates, real-time location data, or custody desk availability.
+
+---
+
+# 8. IDENTITY VERIFICATION AND TRUST
+
+Build an identity and trust section integrated with the canvas.
+
+Support configurable verification levels:
+
+* Email verification.
+* Phone verification.
+* Student or staff identity verification, where applicable.
+* Authorized administrative review.
+
+Verification must use real providers or existing authentication infrastructure.
+
+Do not simulate successful identity verification.
+
+### Verification workflow
+
+Users can drag a verification-request card into an appropriate verification zone to open the required process.
+
+After the required verification steps, update the actual verification status.
+
+Possible states:
+
+* Not started.
+* Pending.
+* Under review.
+* Verified.
+* Rejected.
+* Expired.
+
+Security requirements:
+
+* Never expose uploaded identity documents to other users.
+* Store sensitive files using appropriate private storage.
+* Restrict access through server-side authorization.
+* Avoid collecting unnecessary identity information.
+* Publish appropriate retention and deletion rules.
+* Never display raw identity-document numbers in public profiles.
+* Do not treat a verification badge as proof of ownership.
+
+If official institution verification is unavailable, clearly indicate that limitation.
+
+---
+
+# 9. INTELLIGENT CANVAS FEATURES
+
+Implement the following enhancements wherever the existing stack supports them.
+
+### A. Smart match ranking
+
+Rank compatible reports using explainable criteria.
+
+Display:
+
+* Similarity indicators.
+* Location compatibility.
+* Time compatibility.
+* Distinguishing-detail compatibility.
+* Reasons for ranking.
+
+### B. Activity timeline
+
+Record important events:
+
+* Report created.
+* Potential match identified.
+* Claim submitted.
+* Evidence reviewed.
+* Claim approved.
+* Handover initiated.
+* Item returned.
+
+Only display events the current user is authorized to see.
+
+### C. Notification cards
+
+Create in-app notifications for:
+
+* New potential matches.
+* Claim status changes.
+* Requests for additional evidence.
+* Approved claims.
+* Handover instructions.
+
+Users should be able to drag notification cards into an appropriate workflow zone where supported.
+
+### D. Undo and recovery
+
+For reversible canvas operations:
+
+* Provide a visible undoable-operation history.
+* Support restoration of archived reports.
+* Explain when an operation cannot be undone.
+* Never pretend an irreversible database operation has been reversed.
+
+### E. Keyboard accessibility
+
+The canvas must not be usable only with a mouse.
+
+Provide:
+
+* Keyboard-accessible card selection.
+* Keyboard-based movement between compatible zones.
+* Enter or Space to pick up a selected card.
+* Arrow keys to navigate destinations.
+* Enter or Space to drop.
+* Escape to cancel.
+* Screen-reader announcements.
+* Visible focus indicators.
+
+Use a keyboard-based equivalent of the drag-and-drop workflow rather than replacing primary actions with ordinary buttons.
+
+### F. Mobile interaction
+
+Implement touch-friendly drag-and-drop.
+
+On smaller screens:
+
+* Display the active card prominently.
+* Show compatible action zones in a bottom dock.
+* Keep drop targets large enough for reliable interaction.
+* Prevent accidental browser scrolling while dragging.
+* Provide a clear cancel gesture.
+* Maintain usable forms and maps.
+
+If the existing drag-and-drop implementation does not work reliably on touchscreens, implement a touch-compatible alternative that preserves the card-to-zone interaction model.
+
+---
+
+# 10. VISUAL DESIGN SYSTEM
+
+Create a premium, cohesive visual identity for Findora.
+
+### Design direction
+
+Use a modern dark interface inspired by professional productivity applications and intelligent investigation workspaces.
+
+Recommended palette:
+
+* Deep navy background.
+* Dark slate panels.
+* Electric blue primary accents.
+* Cyan interactive highlights.
+* Green success states.
+* Amber pending states.
+* Red error and destructive-operation states.
+* Soft white typography.
+
+Provide a functional light mode as well.
+
+### Layout
+
+Use:
+
+* A structured navigation sidebar.
+* A large central workspace.
+* Well-organized data cards.
+* Clearly separated action zones.
+* A contextual details panel.
+* Responsive layouts.
+* Consistent spacing.
+* Rounded corners.
+* Subtle borders.
+* Restrained gradients.
+* High-contrast typography.
+
+### Motion design
+
+Implement:
+
+* Card lift during drag.
+* Smooth drop-zone activation.
+* Compatible-zone highlighting.
+* Invalid-drop feedback.
+* Subtle canvas transitions.
+* Loading indicators.
+* Clear success and failure notifications.
+
+Animations must not delay operations, conceal errors, or make the interface difficult to use.
+
+Avoid excessive glow effects, unnecessary animations, and decorative elements that reduce readability.
+
+---
+
+# 11. PRESERVE THE ORIGINAL LOST & FOUND REQUIREMENTS
+
+The new interaction model must not eliminate any essential functionality.
+
+Retain:
+
+* User registration and login.
+* Lost-item reporting.
+* Found-item reporting.
+* Search and filtering.
+* Detailed item pages.
+* Possible match suggestions.
+* Ownership claims.
+* Status tracking.
+* Secure item returns.
+* User profiles.
+* Map discovery.
+* Identity verification.
+* Administrative moderation.
+
+Support the original item statuses:
+
+* Unresolved.
+* Matched.
+* Returned.
+
+Additional internal workflow statuses may be used, but preserve compatibility with the existing database and application logic.
+
+Ensure the platform works for campus, community, office, and similar environments.
+
+---
+
+# 12. DATA MODEL AND BACKEND INTEGRATION
+
+Inspect the current database schema before making changes.
+
+Reuse existing tables, collections, authentication, storage, and API endpoints wherever possible.
+
+If additional fields or tables are necessary, create compatible migrations and document them.
+
+Potential entities include:
+
+* Users.
+* ItemReports.
+* ItemImages.
+* MatchSuggestions.
+* Claims.
+* VerificationRequests.
+* HandoverRecords.
+* Notifications.
+* AuditEvents.
+* CustodyLocations.
+
+These are conceptual entities, not instructions to create duplicate tables blindly.
+
+Use the existing backend architecture and ensure relationships, authorization, validation, and status transitions are implemented consistently.
+
+Never place private API keys or service credentials in frontend code.
+
+Do not introduce demo data into production storage.
+
+---
+
+# 13. ADMINISTRATION AND MODERATION
+
+Provide an administrative workspace for authorized personnel.
+
+Administrators should be able to:
+
+* Review flagged reports.
+* Review claims according to their permissions.
+* Process verification requests.
+* Manage approved custody locations.
+* Investigate disputes.
+* Review audit events.
+* Identify duplicate or abusive reports.
+* Manage inappropriate content.
+
+Use the same card-and-zone model for primary administrative operations.
+
+Enforce server-side role checks.
+
+Do not grant administrator privileges through frontend-only conditions.
+
+Maintain a record of important moderation decisions.
+
+---
+
+# 14. TESTING REQUIREMENTS
+
+Before declaring the application complete, test the following scenarios.
+
+TEST 1:
+Drag a valid item card into the Report Lost workflow.
+
+Expected result: A valid report is created and persisted.
+
+TEST 2:
+Drag an item-information card into Report Found.
+
+Expected result: The found report is validated, stored, and displayed.
+
+TEST 3:
+Drag a report into Find Matches.
+
+Expected result: Compatible reports are retrieved and ranked.
+
+TEST 4:
+Drop an incompatible card into an action zone.
+
+Expected result: The operation is rejected without modifying data.
+
+TEST 5:
+Submit a claim workflow.
+
+Expected result: The claim is stored and assigned the correct initial status.
+
+TEST 6:
+Attempt to access another user's private claim.
+
+Expected result: Unauthorized access is rejected by the backend.
+
+TEST 7:
+Attempt to complete a return without the required approvals.
+
+Expected result: The operation is rejected.
+
+TEST 8:
+Complete an authorized handover.
+
+Expected result: The handover is recorded and the item status is updated.
+
+TEST 9:
+Use the canvas on a mobile device.
+
+Expected result: Dragging, scrolling, forms, navigation, and map interactions remain usable.
+
+TEST 10:
+Use the canvas entirely with a keyboard.
+
+Expected result: Users can select cards, navigate zones, execute permitted workflows, and cancel operations.
+
+TEST 11:
+Disconnect the network during an operation.
+
+Expected result: The user receives a clear failure state and no false success message appears.
+
+TEST 12:
+Refresh the application.
+
+Expected result: Persisted records and statuses remain correct.
+
+Also check:
+
+* Authentication failures.
+* Expired sessions.
+* Duplicate submissions.
+* Permission boundaries.
+* Empty states.
+* Image upload errors.
+* Database errors.
+* Missing environment variables.
+* Invalid form data.
+* Concurrent claim attempts.
+* Build and runtime errors.
+
+---
+
+# 15. IMPLEMENTATION PROCESS
+
+Follow this sequence.
+
+PHASE 1 — INSPECT
+Inspect the repository, identify the framework, map the existing routes, inspect the database schema, and locate all primary-action buttons.
+
+PHASE 2 — PLAN
+Design the canvas layout, identify the data-card types, map each primary action to a compatible zone, and define the required backend transitions.
+
+PHASE 3 — IMPLEMENT
+Build reusable card components, drag-and-drop infrastructure, action zones, validation logic, and backend integration.
+
+PHASE 4 — INTEGRATE
+Connect the canvas to existing authentication, reporting, matching, claims, map, verification, and notification systems.
+
+PHASE 5 — REDESIGN
+Implement the polished visual design, responsive behavior, animations, and accessibility features.
+
+PHASE 6 — VERIFY
+Run the existing test suite, create or update tests, fix errors, and verify the main workflows.
+
+PHASE 7 — DOCUMENT
+Provide setup instructions, required environment variables, migration instructions, test results, and known limitations.
+
+Do not stop after producing a plan. Implement the changes in the existing project.
+
+If you cannot access a required external service, explain the limitation and implement the appropriate integration boundary without fabricating successful responses.
+
+---
+
+# 16. FINAL ACCEPTANCE CRITERIA
+
+The application is ready only when:
+
+1. Primary actions use card-to-zone drag-and-drop workflows.
+2. The action zones enforce valid card types and business rules.
+3. Successful actions persist to the actual backend.
+4. Existing core Lost & Found functionality remains operational.
+5. The map integration works with a real configured map provider.
+6. Identity verification reflects actual verification states.
+7. Claim and return workflows enforce appropriate permissions.
+8. The interface works on desktop and mobile.
+9. Keyboard users can complete the same essential workflows.
+10. Errors, loading states, and confirmations are handled correctly.
+11. The interface contains no fake success states or fabricated production records.
+12. The project builds and runs without unresolved critical errors.
+
+FINAL INSTRUCTION:
+
+Evolve the existing Findora application into a genuine, interactive, drag-and-drop Lost & Found canvas.
+
+Prioritize working functionality, intuitive interaction, data integrity, security, accessibility, and visual quality.
+
+Do not replace real application functionality with decorative animations or static mockups.
+
+Make the canvas the primary way users perform essential actions.
+
+BUILD DIFFERENT. MAKE EVERY DROP COUNT.

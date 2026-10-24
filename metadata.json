@@ -1,0 +1,6 @@
+{
+  "name": "Findora — Intelligent Digital Lost & Found",
+  "description": "Intelligent campus and community lost-and-found platform featuring interactive map discovery, explainable multi-signal matching, 3-tier identity verification, ownership claims, and secure QR/OTP custody handover.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

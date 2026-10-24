@@ -1,0 +1,1404 @@
+# PROJECT: FINDORA — INTELLIGENT DIGITAL LOST & FOUND
+
+Act as a world-class product designer, senior full-stack engineer, UI/UX specialist, database architect, AI engineer, cybersecurity engineer, and technical product manager.
+
+Your mission is to build, improve, and deliver **Findora**, a highly polished, fully functional, intelligent Digital Lost & Found platform for colleges, universities, offices, residential communities, and other shared environments.
+
+This project addresses PS 02 — DIGITAL LOST & FOUND.
+
+Do not create an ordinary listing website. Create a premium, intelligent platform that connects people who have lost belongings with people who have found them, helps verify ownership, and enables secure item recovery.
+
+The product's central promise is:
+
+"Don't scroll a list. Get matched with what you lost."
+
+The application must combine an outstanding frontend, intuitive user experience, interactive maps, intelligent matching, identity verification, privacy protection, secure claims, real-time communication, and reliable backend functionality.
+
+## CRITICAL IMPLEMENTATION RULES
+
+1. If an existing project or codebase is supplied, inspect its structure, dependencies, database configuration, authentication system, and existing features before making changes.
+2. Preserve working functionality and improve the existing application instead of unnecessarily rebuilding everything.
+3. Do not remove existing user data, credentials, environment configuration, or functional integrations.
+4. Implement real application functionality wherever the requirements call for it.
+5. Do not create decorative buttons that do nothing.
+6. Do not simulate successful authentication, verification, database writes, payments, notifications, or item returns.
+7. Never expose API keys, private credentials, service-role keys, or sensitive verification data in frontend code.
+8. Use realistic sample data only in a clearly identified development or demonstration environment. The production application must use real persisted data.
+9. If an external service requires credentials, provide clear setup instructions and environment-variable names. Do not pretend that an unconfigured integration is working.
+10. Do not leave core functionality as TODO comments, placeholder pages, or disconnected mock interfaces.
+11. Test the application after implementation, resolve errors, and verify the complete user journey.
+12. If a requirement cannot be completed because an external credential or service is unavailable, implement the integration interface and report precisely what configuration is still required.
+
+Prioritize a coherent, working application over adding an excessive number of unfinished features.
+
+# 1. PRODUCT IDENTITY AND VISUAL DIRECTION
+
+Product name: Findora.
+
+Product category: Intelligent Digital Lost & Found.
+
+Target users:
+
+* Students.
+* Faculty and staff.
+* Security personnel.
+* Campus administrators.
+* Office employees.
+* Community members.
+
+Create a sophisticated, modern, premium interface inspired by the best contemporary SaaS dashboards, intelligent discovery platforms, and map-centric applications.
+
+The visual experience should feel trustworthy, innovative, responsive, clean, and effortless to use.
+
+## Visual identity
+
+Use a refined design system with:
+
+* Deep midnight navy or charcoal backgrounds.
+* Crisp white and soft neutral surfaces.
+* Electric blue or cyan accents.
+* Subtle violet accents for AI-related interactions.
+* Emerald green for verified and successfully returned items.
+* Amber for pending claims and attention-required states.
+* Red for urgent alerts and destructive actions.
+* Carefully controlled gradients.
+* Soft shadows and elegant borders.
+* Rounded cards with consistent corner radii.
+* Modern typography.
+* Clear visual hierarchy.
+* Generous spacing.
+* Beautiful icons.
+* Smooth transitions.
+* Subtle background textures where appropriate.
+
+Avoid excessive gradients, unnecessary neon effects, cluttered dashboards, oversized empty cards, and distracting animations.
+
+The application must look like a professionally designed, production-ready product rather than a generic AI-generated template.
+
+## Theme system
+
+Implement:
+
+* Dark mode.
+* Light mode.
+* System theme preference.
+* A persistent theme switcher.
+* Consistent colors across every page, dialog, dropdown, chart, map, and form.
+
+## Responsive design
+
+The application must work correctly on:
+
+* Desktop computers.
+* Laptops.
+* Tablets.
+* Android phones.
+* iPhones.
+
+Desktop should have a sophisticated sidebar and spacious dashboard layout.
+
+Mobile should use an intuitive compact navigation system, accessible buttons, responsive cards, and a bottom navigation bar where appropriate.
+
+Every essential action must be accessible on mobile. Do not hide profile, claims, reporting, or verification features simply because the screen is smaller.
+
+# 2. INFORMATION ARCHITECTURE
+
+Build the following pages and connect them through functional navigation.
+
+PUBLIC PAGES:
+
+* Landing page.
+* Explore lost and found items.
+* Interactive public discovery map.
+* How Findora works.
+* Sign in.
+* Create account.
+* Email verification.
+* Privacy policy.
+* Terms of service.
+
+AUTHENTICATED USER PAGES:
+
+* Personal dashboard.
+* Report a lost item.
+* Report a found item.
+* My reports.
+* My potential matches.
+* Match details.
+* Item details.
+* My claims.
+* Claims requiring my review.
+* Secure in-app chat.
+* Interactive map.
+* Notifications.
+* Identity verification center.
+* Trust profile.
+* Return and handover tracking.
+* User profile and settings.
+
+ADMINISTRATION PAGES:
+
+* Administrative dashboard.
+* User and role management.
+* Item report moderation.
+* Claim review.
+* Identity verification review.
+* Custody desk management.
+* Return and handover management.
+* Dispute resolution.
+* Fraud and abuse reports.
+* System activity logs.
+* Platform analytics.
+
+Implement route protection and role-based permissions.
+
+Users must never gain administrator privileges by modifying frontend state or changing a URL.
+
+# 3. LANDING PAGE — MAKE A STRONG FIRST IMPRESSION
+
+Create an outstanding landing page that immediately communicates Findora's value.
+
+## Hero section
+
+Headline:
+
+"Lost Something? Let Findora Find It."
+
+Supporting text:
+
+"Report what you lost, discover intelligent matches, and recover your belongings through a trusted, secure community."
+
+Primary CTA:
+"Report Lost Item"
+
+Secondary CTA:
+"Report Found Item"
+
+Additional CTA:
+"Explore the Map"
+
+The hero should feature an attractive, interactive lost-and-found discovery interface.
+
+Show a visual example of a lost report being matched with a found report, including a match-strength indicator and an explanation of why the reports are similar.
+
+This example is illustrative until real reports are loaded. Clearly distinguish illustrative examples from real user reports.
+
+## Landing page sections
+
+Include:
+
+1. Hero section.
+2. How Findora works.
+3. Interactive preview of the matching engine.
+4. Map-based item discovery.
+5. Identity and ownership verification.
+6. Secure return process.
+7. Trust and privacy features.
+8. Supported environments.
+9. Real platform statistics when actual data is available.
+10. Frequently asked questions.
+11. Footer with legal, privacy, and support links.
+
+Use scroll animations sparingly and respect reduced-motion accessibility settings.
+
+Never invent real-world user counts, recovery statistics, or success rates.
+
+# 4. AUTHENTICATION AND ACCOUNT MANAGEMENT
+
+Implement a real authentication system.
+
+Required functionality:
+
+* Email and password registration.
+* Email and username sign-in where supported by the chosen authentication architecture.
+* Email verification.
+* Secure password reset.
+* Session persistence.
+* Sign-out.
+* Profile management.
+* Account deletion workflow.
+* Role-based access control.
+
+Do not store plaintext passwords.
+
+Use a supported authentication provider rather than implementing password storage manually.
+
+Create onboarding steps that introduce the platform and explain verification requirements.
+
+Allow users to complete basic onboarding without granting access to restricted actions before required verification.
+
+Support the following roles:
+
+1. Standard user.
+2. Verified user.
+3. Authorized security or custody-desk staff.
+4. Administrator.
+
+Define the permissions for each role on the backend.
+
+# 5. PERSONAL DASHBOARD
+
+Build a premium dashboard that displays useful information instead of decorative metrics.
+
+## Dashboard overview
+
+Display:
+
+* Active lost-item reports.
+* Active found-item reports.
+* New potential matches.
+* Pending claims.
+* Claims awaiting the user's review.
+* Items successfully returned.
+* Verification progress.
+* Trust score and verified-return history.
+* Recent notifications.
+* Recent account activity.
+
+## Dashboard interactions
+
+Every card should navigate to its relevant page or filtered report list.
+
+Include:
+
+* Quick report actions.
+* Recent matching activity.
+* A small map preview.
+* Upcoming pickup appointments.
+* Claim status timeline.
+* Recent chat messages.
+* Priority alerts for important items.
+
+Retrieve counts from actual backend records.
+
+If the account has no reports, display a helpful empty state with clear actions to create the first report.
+
+# 6. LOST AND FOUND REPORTING SYSTEM
+
+Create a beautiful, guided, four-step reporting experience.
+
+Support both lost-item and found-item reports.
+
+## Step 1: Item information
+
+Fields:
+
+* Item name.
+* Category.
+* Brand.
+* Model.
+* Color.
+* Material.
+* Size or distinguishing characteristics.
+* Description.
+* Optional serial or identifying information, handled securely.
+
+Suggested categories:
+
+* Electronics.
+* Bags and backpacks.
+* Wallets and purses.
+* Keys.
+* Identity cards.
+* Documents.
+* Books and stationery.
+* Clothing.
+* Jewellery.
+* Accessories.
+* Water bottles.
+* Other.
+
+Allow users to select a category or provide a custom description.
+
+## Step 2: Photos and identifying details
+
+Allow:
+
+* Multiple image uploads.
+* Image preview.
+* Image removal.
+* Upload progress.
+* File validation.
+* Optional image captions.
+
+For found items, include a separate private field for a secret identifying characteristic.
+
+Examples include:
+
+* A small scratch.
+* An unusual marking.
+* A hidden accessory.
+* A distinctive internal feature.
+
+Do not display this private characteristic in public search results, public APIs, or ordinary item-detail responses.
+
+Do not use the secret characteristic as the sole basis for ownership verification.
+
+## Step 3: Location and time
+
+Allow users to select:
+
+* Campus or community.
+* Building.
+* Floor or area, where appropriate.
+* Approximate incident location.
+* Date.
+* Approximate time or time range.
+
+Include an interactive map picker.
+
+Users should be able to:
+
+* Search for a building.
+* Click the map to select a location.
+* Move a location marker.
+* Select a known building or landmark.
+* Choose an approximate location when the exact location is unknown.
+
+For found reports, optionally allow the finder to identify a designated custody desk.
+
+## Step 4: Review and submit
+
+Show a polished report preview.
+
+Allow users to review the submitted information, confirm the privacy settings, and submit the report.
+
+Include:
+
+* Form validation.
+* Clear validation messages.
+* Autosaved drafts.
+* Submission progress.
+* Duplicate-submission protection.
+* Success confirmation.
+* Automatic matching after a successful save.
+
+Do not mark a report as successfully submitted until the backend confirms that it has been saved.
+
+# 7. INTERACTIVE MAP INTEGRATION
+
+Map integration is a major product feature and must be implemented properly.
+
+Use a real map provider such as Mapbox or Google Maps, or another suitable mapping service.
+
+Choose one primary provider and implement it consistently.
+
+Keep provider credentials in appropriate environment variables and use the provider's required security restrictions.
+
+Do not draw a static map image and present it as an interactive map.
+
+## Map interface
+
+Build a full-screen or spacious map-discovery page with:
+
+* Interactive map tiles.
+* Zoom controls.
+* Pan and drag.
+* Search by building or place.
+* Lost-item markers.
+* Found-item markers.
+* Selected-item highlighting.
+* Marker clustering when appropriate.
+* A synchronized results panel.
+* Map and list view switching.
+* Category filters.
+* Date filters.
+* Report-status filters.
+* Match-strength filters.
+* A nearby-items option.
+* A custody-desk layer.
+* A map legend.
+
+Use distinct, accessible marker styles for lost items, found items, custody desks, and relevant match indicators.
+
+When a marker is selected, open a polished information card containing the permitted report details and a link to the item page.
+
+Selecting a report from the list should highlight the corresponding marker.
+
+## Location privacy
+
+Never expose a sensitive item's exact location by default.
+
+For vulnerable locations, identity documents, keys, expensive electronics, or other sensitive items, use approximate public map locations.
+
+Keep exact location information available only to authorized users when operationally necessary.
+
+For example:
+
+* Public view: "Near Main Library."
+* Authorized view: precise location details when needed for a verified recovery process.
+
+Do not publish a user's live location or track users continuously.
+
+The platform should not require continuous GPS access.
+
+Request browser location permission only when the user explicitly chooses a location-related action that benefits from it.
+
+## Nearby custody desks
+
+Show authorized handover locations on the map.
+
+Each desk may display:
+
+* Name.
+* Building.
+* General location.
+* Operating hours.
+* Supported handover types.
+* Contact channel.
+* Availability, when real availability data is configured.
+
+Allow users to select a desk during the handover process.
+
+Do not invent live operating hours or real-time availability.
+
+## Directions
+
+Where supported, allow users to open directions to a designated custody desk using the selected map provider.
+
+Directions should lead to an approved handover location, not disclose another user's private address.
+
+## Map acceptance criteria
+
+The map must:
+
+* Load real map tiles.
+* Display actual saved report locations.
+* Update when filters change.
+* Show appropriate markers.
+* Open relevant report details.
+* Handle location permission denial.
+* Handle missing coordinates.
+* Display useful loading and error states.
+
+If the map provider is not configured, show a clear setup message instead of a fake working map.
+
+# 8. INTELLIGENT MATCHING ENGINE
+
+This is the central differentiating feature of Findora.
+
+Build a genuine matching service that compares lost and found reports and recommends likely pairs.
+
+Do not implement matching as a random score or hardcoded sample.
+
+## Matching signals
+
+Compare:
+
+1. Item category.
+2. Item name.
+3. Color.
+4. Brand and model.
+5. Material and appearance.
+6. Distinguishing descriptions.
+7. Location proximity.
+8. Incident time compatibility.
+9. Optional image similarity.
+10. Urgency and relevant report context.
+
+## Explainable similarity scoring
+
+Start with a configurable weighted scoring model.
+
+Illustrative initial weights:
+
+* Category: 25%.
+* Appearance: 20%.
+* Location: 20%.
+* Timeline: 15%.
+* Description similarity: 20%.
+
+Normalize applicable scores to a common scale and handle missing information appropriately.
+
+These weights are starting parameters, not fixed truth. Evaluate them using test cases and adjust them based on matching quality.
+
+Do not interpret a similarity score as the probability of ownership.
+
+## Matching workflow
+
+When a report is submitted or updated:
+
+1. Save and validate the report.
+2. Find compatible reports of the opposite type.
+3. Exclude invalid, inaccessible, or incompatible candidates.
+4. Calculate similarity scores.
+5. Rank candidates.
+6. Store or retrieve match records without creating duplicates.
+7. Notify authorized participants when appropriate.
+8. Display the match with an explanation.
+
+## Match explanations
+
+Every match should explain its score in plain language.
+
+Example:
+
+"Strong potential match:
+
+* Both reports describe a black backpack.
+* Both mention a distinctive sticker.
+* The reported locations are nearby.
+* The incident times are compatible."
+
+Only show explanations supported by actual report data.
+
+## Match management
+
+Provide filters for:
+
+* All matches.
+* Suggested.
+* Under review.
+* Confirmed.
+* Dismissed.
+
+Allow authorized users to confirm or dismiss candidate matches.
+
+Provide a way to report an incorrect match.
+
+Never automatically approve an ownership claim merely because the similarity score is high.
+
+## Optional AI enhancements
+
+Where suitable and configured, support:
+
+* Semantic description similarity.
+* Image similarity.
+* Multilingual description comparison.
+* Duplicate report detection.
+
+Keep the basic matching system functional even if optional AI services are unavailable.
+
+Do not send private ownership evidence, identity documents, or unnecessary personal information to an external AI provider.
+
+# 9. THREE-TIER IDENTITY VERIFICATION
+
+Implement a transparent verification center with three verification tiers.
+
+Display the user's current tier, completed checks, pending checks, and available actions.
+
+## Tier 1: Campus email verification
+
+Requirements:
+
+* Verify access to an email address.
+* Support an authorized email-domain allow-list where appropriate.
+* Use a one-time verification link or code.
+* Apply expiration and rate limits.
+* Prevent repeated verification abuse.
+
+A verified email indicates control of that email address. It does not independently prove a person's real-world identity.
+
+## Tier 2: Phone verification
+
+Requirements:
+
+* Send an SMS one-time password through a configured provider.
+* Validate the code on the server.
+* Apply expiration and retry limits.
+* Rate-limit code requests.
+* Prevent OTP brute-force attempts.
+* Store verification state securely.
+
+Require successful phone verification before allowing users to submit reports, following the Findora product concept.
+
+If a verified phone is unavailable, show a clear setup or retry message.
+
+## Tier 3: Student or staff identity verification
+
+Allow users to submit an institution-approved identity document or use an institution-approved verification process.
+
+Possible checks:
+
+* Institution.
+* Student or employee identifier.
+* Name consistency.
+* Document format.
+* Expiration, where applicable.
+* Manual administrative review.
+* An approved external verification provider, if configured.
+
+Require the appropriate Tier 3 approval before allowing users to submit restricted ownership claims or complete controlled pickup.
+
+Do not assume that a document-format check proves identity.
+
+Do not claim that a person is verified merely because they uploaded an image.
+
+## Identity-document privacy
+
+Identity documents must:
+
+* Be stored in private storage.
+* Never be publicly accessible.
+* Be accessible only to authorized verification personnel and approved services.
+* Use short-lived authorized access where appropriate.
+* Be protected by backend authorization rules.
+* Be deleted after approval according to the defined retention policy, except where a documented legal or security requirement requires otherwise.
+* Have deletion status recorded where appropriate.
+
+Clearly explain why verification is needed and how the data will be handled.
+
+Do not use uploaded identity documents for unrelated purposes.
+
+Where possible, use an institution-approved identity provider instead of collecting document images directly.
+
+## Verification badges
+
+Show clearly differentiated badges:
+
+* Email Verified.
+* Phone Verified.
+* Student/Staff Verified.
+
+Display the user's verified tier in relevant profiles, claims, and chat interfaces without exposing their documents or private identity details.
+
+# 10. CLAIM AND OWNERSHIP VERIFICATION
+
+Implement a complete claim workflow.
+
+## Claim submission
+
+The claimant should:
+
+* Select a potential match.
+* Submit an ownership claim.
+* Answer relevant identifying questions.
+* Provide additional evidence where appropriate.
+* Accept the privacy and handover terms.
+* Track the claim's status.
+
+## Private ownership evidence
+
+The finder may record one or more identifying characteristics that are not shown publicly.
+
+During a claim:
+
+* Ask the claimant to provide the relevant characteristic.
+* Compare responses only where the information is suitable for automated comparison.
+* Do not expose the original secret characteristic before the review is completed.
+* Allow manual review if the comparison is ambiguous.
+* Prevent repeated guessing or automated brute-force attempts.
+
+For free-text evidence, use an appropriate comparison method and human review where necessary.
+
+A correct answer should support verification, not guarantee ownership.
+
+## Claim statuses
+
+Use:
+
+* Pending.
+* Under review.
+* Approved.
+* Rejected.
+* Cancelled.
+* Completed.
+
+## Claim management dashboard
+
+Display:
+
+* Claims submitted by the user.
+* Claims on the user's found items.
+* Claims awaiting review.
+* Recently resolved claims.
+* Claim details.
+* Review history.
+* Relevant notifications.
+
+Only authorized users may approve or reject claims.
+
+Prevent unauthorized users from changing claim states through direct API calls.
+
+# 11. SECURE QR CODE AND OTP HANDOVER
+
+Build a reliable return process that supports authorized custody desks.
+
+## Workflow
+
+1. An eligible claim is approved.
+2. The backend generates a cryptographically secure, one-time handover token.
+3. The token is associated with the relevant item, claim, and approved pickup process.
+4. The system generates a QR code or displays a six-digit OTP.
+5. The claimant visits the designated custody desk during the agreed time window.
+6. Authorized staff scan the QR code or validate the OTP.
+7. The backend checks the token's validity and permissions.
+8. The token is marked as consumed atomically.
+9. The handover is confirmed.
+10. The relevant report and claim statuses are updated.
+11. Participants receive confirmation.
+
+## Security requirements
+
+* Tokens must expire.
+* Tokens must not be reusable.
+* OTP attempts must be rate-limited.
+* Only authorized staff may validate handovers.
+* Replayed requests must not create duplicate returns.
+* The backend must prevent unauthorized status transitions.
+* Pickup codes must not be exposed to unrelated users.
+* Failed validation must not mark an item as returned.
+
+Never use a permanent item ID or a predictable report number as the security token.
+
+## Pickup scheduling
+
+Support:
+
+* Selecting a custody desk.
+* Choosing an available pickup window.
+* Viewing pickup instructions.
+* Rescheduling when allowed.
+* Cancelling a pickup.
+* Confirming the completed handover.
+
+If scheduling availability is not configured, display the actual available workflow instead of inventing appointment slots.
+
+# 12. TRUST SCORE AND COMMUNITY REPUTATION
+
+Create a transparent trust profile.
+
+Display:
+
+* Verification tier.
+* Number of verified returns.
+* Completed handovers.
+* Positive feedback.
+* Relevant moderation restrictions.
+* Trust score, if implemented.
+
+Use a configurable scoring model based on legitimate, verifiable events.
+
+For example:
+
+* Verified successful returns may increase the score.
+* Repeated substantiated abuse may result in a review or restriction.
+* Unverified accusations must not automatically reduce someone's reputation.
+* Users must have a way to dispute incorrect records.
+
+Do not make verification tiers or trust scores purchasable.
+
+Do not allow users to artificially increase scores through self-reported returns or duplicate transactions.
+
+Show users a concise explanation of how their trust score is calculated.
+
+If a score has not yet been calculated, display an appropriate empty state rather than inventing a value.
+
+# 13. IN-APP CHAT AND NOTIFICATIONS
+
+Implement secure communication between authorized participants.
+
+## Chat
+
+Features:
+
+* Conversations associated with a report, match, or claim.
+* Real-time messages where supported.
+* Read indicators where supported.
+* Timestamps.
+* Message history.
+* Unread-message counts.
+* Conversation reporting.
+* Appropriate moderation controls.
+* Optional attachment support with secure validation.
+
+Do not expose private phone numbers or personal email addresses in chat by default.
+
+Reveal contact information only when explicitly authorized and necessary under the platform's policies.
+
+Display relevant verification badges and claim status.
+
+Allow communication with authorized custody-desk staff.
+
+## Notifications
+
+Implement in-app notifications for:
+
+* Potential matches.
+* New claims.
+* Claim decisions.
+* Verification status changes.
+* Incoming messages.
+* Pickup reminders.
+* Handover confirmations.
+* Report status updates.
+
+Where configured, support email and push notifications.
+
+Notifications must be generated from actual backend events.
+
+Allow users to control nonessential notification preferences.
+
+Do not display sensitive ownership evidence or identity information in notification previews.
+
+# 14. MULTILINGUAL SUPPORT
+
+Build an extensible internationalization system.
+
+Initially support:
+
+* English.
+* Hindi.
+
+Design the system so additional languages can be added later.
+
+Requirements:
+
+* Language selector.
+* Translated interface labels.
+* Localized dates and times.
+* Unicode and Devanagari support.
+* Search across supported scripts.
+* Language-aware input fields.
+* Optional cross-language description matching.
+* Optional chat translation through a configured translation service.
+
+Do not translate names, serial numbers, identity numbers, or other sensitive identifiers unnecessarily.
+
+Preserve the original message alongside any translation.
+
+Changing the language must update the interface consistently rather than translating only the navigation bar.
+
+# 15. ITEM DETAIL PAGES
+
+Every report should have a dedicated details page.
+
+Display:
+
+* Item title.
+* Available images.
+* Category.
+* Appearance.
+* Public description.
+* Approximate location.
+* Incident date and time, where safe.
+* Current status.
+* Match information.
+* Authorized custody information, where applicable.
+* Claim actions.
+* Relevant report history.
+
+Include:
+
+* A clear back-navigation path.
+* Related potential matches.
+* A report-abuse action.
+* A shareable public report link when permitted.
+
+Never expose secret ownership evidence, private identity documents, hidden contact details, or sensitive precise coordinates.
+
+# 16. STATUS AND PRIORITY MANAGEMENT
+
+Implement the required report statuses:
+
+* Unresolved.
+* Matched.
+* Returned.
+
+Keep report statuses separate from claim and match-review statuses.
+
+Use a clear timeline showing meaningful events.
+
+Suggested report workflow:
+
+Unresolved → Matched → Returned.
+
+The transition to Returned must require a valid, authorized handover confirmation.
+
+A suggested match must not automatically make an item Returned.
+
+Support priority levels:
+
+* Low.
+* Medium.
+* High.
+
+Allow users to flag important items such as identity documents, keys, wallets, and essential electronics.
+
+Priority affects sorting and notifications, not ownership verification.
+
+Prevent users from marking every report as high priority without appropriate controls.
+
+# 17. ADMINISTRATOR AND SECURITY-DESK PORTAL
+
+Create a separate administrative interface.
+
+## Administrator overview
+
+Display real data about:
+
+* Active reports.
+* Potential matches.
+* Pending claims.
+* Verification requests.
+* Successful returns.
+* Open disputes.
+* Reports awaiting moderation.
+
+## Administrative tools
+
+Authorized administrators can:
+
+* Review flagged reports.
+* Review identity verification requests.
+* Resolve disputes.
+* Manage authorized custody desks.
+* Suspend abusive accounts under defined policies.
+* Investigate suspicious claims.
+* Review relevant audit events.
+* Correct invalid records through audited operations.
+
+## Security-desk tools
+
+Authorized custody staff can:
+
+* View assigned handover appointments.
+* Verify approved pickup codes.
+* Scan handover QR codes.
+* Record completed returns.
+* Report failed handovers.
+* View only the information required for their duties.
+
+Implement server-side role checks for every privileged operation.
+
+Record security-sensitive administrative actions in an audit log.
+
+Do not allow administrators to access private identity documents without a legitimate verification-related permission.
+
+# 18. DATABASE AND BACKEND ARCHITECTURE
+
+Build a real backend with persistent storage.
+
+Use the existing project's architecture where appropriate.
+
+If a stack has not been selected, choose one coherent, supported stack. For example:
+
+Frontend:
+
+* React.
+* TypeScript.
+* Tailwind CSS.
+* An accessible component library.
+* A suitable routing solution.
+
+Backend:
+
+* A secure API or managed backend.
+* Server-side validation.
+* Authentication middleware.
+* Background matching jobs where needed.
+
+Database:
+
+* PostgreSQL with suitable access policies, or a properly configured Firebase architecture.
+
+Storage:
+
+* Public or appropriately restricted storage for approved item images.
+* Private storage for identity documents and sensitive verification evidence.
+
+External services:
+
+* A mapping provider.
+* An SMS verification provider.
+* Email delivery.
+* Optional AI or semantic matching services.
+* Optional push notifications.
+
+## Core data entities
+
+Design the database around:
+
+* Users.
+* User profiles.
+* Verification records.
+* Item reports.
+* Item images.
+* Potential matches.
+* Claims.
+* Private ownership evidence.
+* Chat conversations.
+* Chat messages.
+* Notifications.
+* Custody desks.
+* Pickup appointments.
+* Handover tokens.
+* Return records.
+* Trust events.
+* Disputes.
+* Audit logs.
+
+Define:
+
+* Primary keys.
+* Foreign keys.
+* Appropriate indexes.
+* Unique constraints.
+* Relationships.
+* Status enums or equivalent validation.
+* Timestamps.
+* Data-retention policies.
+
+Prevent duplicate matches and invalid report relationships.
+
+Use transactions for operations that must update related records consistently.
+
+Implement pagination for reports, matches, claims, and messages.
+
+Do not load the entire database into the browser.
+
+# 19. SECURITY AND PRIVACY
+
+Security is a core product feature.
+
+Implement:
+
+* Server-side authentication checks.
+* Role-based authorization.
+* Database-level access policies where supported.
+* Input validation.
+* Secure file uploads.
+* Rate limiting.
+* Protection against unauthorized data access.
+* Appropriate session handling.
+* Audit logging for sensitive operations.
+* Secure token generation.
+* Safe error messages.
+* Protection against duplicate submissions.
+* Appropriate CORS and security headers.
+* Secrets management.
+
+Use the principle of least privilege.
+
+Separate public report information from private ownership and identity information.
+
+Do not trust frontend-supplied user IDs, verification statuses, match scores, or role values.
+
+Verify permissions on the server for every sensitive operation.
+
+Never place private service credentials in client-side environment variables.
+
+Do not log passwords, OTP values, full identity documents, private ownership answers, or secret tokens.
+
+Document the retention and deletion rules for identity data.
+
+# 20. REAL FUNCTIONALITY — NO FAKE IMPLEMENTATIONS
+
+The following must use real application logic:
+
+* Authentication.
+* Email verification.
+* Phone verification when configured.
+* Report creation.
+* Image uploads.
+* Search and filtering.
+* Interactive map.
+* Match generation.
+* Match review.
+* Claim submission.
+* Claim approval and rejection.
+* Role permissions.
+* Chat.
+* Notifications.
+* QR/OTP handover.
+* Report status updates.
+* Administrative actions.
+* Data persistence.
+
+Do not use browser local storage as the primary database.
+
+Local storage may be used for harmless preferences such as theme and language, but server-managed records must be persisted through the backend.
+
+If a feature depends on an unavailable external provider, show an honest configuration state and a clear setup path.
+
+Never show a fake "Verified", "Message sent", "Match found", or "Item returned" success state when the operation has failed.
+
+# 21. ENVIRONMENT CONFIGURATION
+
+Create an example environment file containing only the variables actually required by the chosen implementation.
+
+Possible variables include:
+
+* Database connection configuration.
+* Authentication configuration.
+* Public map-provider key.
+* Server-side map-provider credentials, if required.
+* SMS provider credentials.
+* Email service credentials.
+* Private object-storage credentials, if required.
+* Optional AI API credentials.
+* Application base URL.
+* Public site URL.
+* Webhook secrets where required.
+
+Use the provider's actual variable names and configuration requirements.
+
+Do not invent credentials or place real secrets in the example file.
+
+Clearly distinguish public client-side configuration from private server-side secrets.
+
+Include setup instructions for:
+
+* Creating required provider accounts.
+* Enabling required services.
+* Configuring allowed domains and redirect URLs.
+* Setting authentication callbacks.
+* Configuring map restrictions.
+* Applying database migrations.
+* Configuring storage permissions.
+* Setting deployment environment variables.
+
+# 22. PERFORMANCE AND ACCESSIBILITY
+
+Optimize the application for practical everyday use.
+
+Implement:
+
+* Responsive image loading.
+* Lazy loading where appropriate.
+* Database indexes.
+* Paginated results.
+* Efficient map-marker rendering.
+* Loading skeletons.
+* Empty states.
+* Error boundaries.
+* Retry actions where safe.
+* Keyboard navigation.
+* Accessible form labels.
+* Visible focus indicators.
+* Appropriate color contrast.
+* Screen-reader-friendly status messages.
+* Reduced-motion support.
+* Clear mobile touch targets.
+
+Avoid unnecessary network requests and expensive matching operations.
+
+Move expensive matching tasks to an appropriate backend process when necessary.
+
+# 23. OPTIONAL ADVANCED FEATURES
+
+After all required features work, implement additional enhancements where feasible.
+
+## Smart image assistance
+
+Allow users to upload an item photo and receive suggestions for category, color, or visual description.
+
+Require user confirmation before saving automatically generated details.
+
+## Duplicate report detection
+
+Identify reports that may describe the same item and ask users to review the possible duplicate.
+
+Do not automatically delete reports solely because they look similar.
+
+## Intelligent discovery assistant
+
+Add a conversational search interface that helps users find relevant reports using natural language.
+
+Example:
+
+"I lost a blue backpack near the library yesterday afternoon."
+
+The assistant should convert this into search filters and display actual matching reports.
+
+It must not invent reports or claim that an item has been found without database evidence.
+
+## Accessibility assistance
+
+Provide:
+
+* Voice-friendly input where supported.
+* Clear language.
+* Large-text compatibility.
+* Keyboard navigation.
+* Optional speech-to-text.
+
+## Community analytics
+
+Show administrators aggregated insights such as:
+
+* Frequently reported categories.
+* General loss hotspots.
+* Average time to resolution.
+* Verified return counts.
+
+Use real records, avoid exposing individual users, and do not publish statistics that could compromise privacy.
+
+## Reward and appreciation system
+
+Allow an optional thank-you message or reward offer where appropriate.
+
+Do not implement payment processing unless explicitly required and securely configured.
+
+# 24. DESIGN QUALITY REQUIREMENTS
+
+Every page must be designed, not merely generated from a basic template.
+
+Pay special attention to:
+
+* Dashboard hierarchy.
+* Sidebar spacing.
+* Search and filter usability.
+* Card consistency.
+* Form layout.
+* Match-strength visualization.
+* Map and results synchronization.
+* Verification progress indicators.
+* Claim timelines.
+* Chat layout.
+* Empty states.
+* Confirmation dialogs.
+* Mobile navigation.
+
+Use consistent design tokens and reusable components.
+
+Include subtle, meaningful animations for:
+
+* Page transitions.
+* Opening dialogs.
+* Updating match results.
+* Loading map details.
+* Completing steps in the handover workflow.
+
+Keep animations lightweight and respect accessibility preferences.
+
+Avoid overloading the interface with graphs or metrics that do not help the user recover an item.
+
+# 25. REQUIRED TESTING
+
+Before declaring the application complete, test the following scenarios.
+
+TEST 1:
+A new user registers and verifies their email.
+
+TEST 2:
+The user completes the required phone verification.
+
+TEST 3:
+The user submits a lost-item report.
+
+TEST 4:
+Another user submits a corresponding found-item report.
+
+TEST 5:
+The matching engine identifies and explains the potential match.
+
+TEST 6:
+The original user receives the match notification.
+
+TEST 7:
+The user submits a claim and provides ownership evidence.
+
+TEST 8:
+An authorized reviewer evaluates and approves the claim.
+
+TEST 9:
+The application generates a secure handover QR code or OTP.
+
+TEST 10:
+Authorized custody staff validate the handover.
+
+TEST 11:
+The application records the completed return and updates the relevant statuses.
+
+TEST 12:
+Unauthorized users cannot access private identity documents or ownership evidence.
+
+TEST 13:
+The map displays persisted report locations and responds to filters.
+
+TEST 14:
+The application remains usable on mobile devices.
+
+TEST 15:
+The application handles failed network requests, invalid forms, expired codes, duplicate submissions, and unavailable external services.
+
+TEST 16:
+A user cannot approve their own claim unless an explicitly authorized policy permits that action.
+
+TEST 17:
+Two competing claims cannot incorrectly complete the same handover.
+
+TEST 18:
+The application handles a report with missing coordinates or incomplete optional information.
+
+Use automated tests where appropriate and manually verify the complete workflow.
+
+Do not report tests as passing unless they have actually been run.
+
+# 26. FINAL DELIVERABLES
+
+Deliver the following:
+
+1. Complete frontend.
+2. Functional backend.
+3. Database schema and migrations.
+4. Authentication and authorization.
+5. Working map integration.
+6. Intelligent matching service.
+7. Three-tier verification workflow.
+8. Claim and ownership verification.
+9. Secure QR/OTP handover.
+10. Chat and notifications.
+11. Responsive dashboards.
+12. Administrative portal.
+13. Environment-variable example file.
+14. Setup and deployment instructions.
+15. Security and privacy configuration.
+16. Automated tests for important workflows.
+17. A clear list of configured integrations.
+18. A list of any remaining external credentials or manual setup requirements.
+
+If the platform supports direct deployment, prepare the application for deployment and provide the resulting URL only after a deployment has actually succeeded.
+
+Do not claim the site is publicly deployed if it is only running in a local preview.
+
+# 27. IMPLEMENTATION ORDER
+
+Follow this order to avoid building disconnected features.
+
+PHASE 1 — FOUNDATION
+Inspect the codebase, establish the architecture, configure authentication, database, routing, and design system.
+
+PHASE 2 — PREMIUM FRONTEND
+Build the landing page, navigation, responsive dashboard, report forms, search pages, item details, and dark/light themes.
+
+PHASE 3 — CORE WORKFLOW
+Implement report creation, persistent storage, search, filtering, and status management.
+
+PHASE 4 — INTELLIGENCE
+Implement candidate matching, similarity scoring, match explanations, and notifications.
+
+PHASE 5 — TRUST AND RECOVERY
+Implement email and phone verification, identity review, ownership claims, QR/OTP handover, and return confirmation.
+
+PHASE 6 — MAP AND COMMUNICATION
+Complete map integration, custody desk discovery, chat, multilingual support, and optional AI-assisted discovery.
+
+PHASE 7 — ADMINISTRATION
+Implement moderation, verification review, dispute handling, audit logs, and administrative controls.
+
+PHASE 8 — QUALITY ASSURANCE
+Run tests, fix runtime and build errors, check responsive layouts, review security policies, and verify every critical workflow.
+
+At the end of each phase, verify that existing functionality still works.
+
+# FINAL INSTRUCTION
+
+Build Findora as a cohesive, premium, fully functional application.
+
+The interface must be beautiful enough to impress hackathon judges, but the underlying workflows must be reliable enough for real users.
+
+Do not stop after generating the homepage.
+
+Do not stop after generating the dashboard.
+
+Do not stop after connecting the database.
+
+Complete the essential journey from reporting an item through matching, ownership verification, and secure handover.
+
+Start by inspecting the existing project and identifying the current architecture, working features, missing integrations, and implementation risks.
+
+Then implement the application systematically, verify each feature, and provide a concise final report describing what works, what was tested, which integrations are configured, and what remains to be configured.
+
+**Findora: Lost it. Found it. Back to you.**
